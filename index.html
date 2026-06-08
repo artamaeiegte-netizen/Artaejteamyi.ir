@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مهندس آرتا اجتماعی | طراح وب</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+        :root {
+            --primary: #00f2ea;
+            --secondary: #ff0055;
+            --bg-dark: #0a0a0a;
+            --card-bg: rgba(22, 22, 22, 0.7);
+            --text: #fff;
+            --gray: #b3b3b3;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        /* پس‌زمینه متحرک */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0b14, #0b141a, #0a0a0a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -2;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* ذرات معلق */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 20s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+        /* هدر */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 242, 234, 0.5);
+            letter-spacing: 1px;
+        }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+        nav a:hover::after { width: 100%; }
+        nav a:hover { color: var(--primary); }
+        /* بخش‌ها */
+        section {
+            min-height: 100vh;
+            padding: 120px 20px 50px;
+            display: none; /* مخفی به صورت پیش‌فرض */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        section.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideIn 0.8s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        p { color: var(--gray); max-width: 600px; margin-bottom: 40px; font-size: 1.2rem; line-height: 1.8; }
+        /* دکمه‌ها */
+        .btn {
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 0; height: 100%;
+            background: var(--primary);
+            z-index: -1;
+            transition: width 0.3s;
+        }
+        .btn:hover::before { width: 100%; }
+        .btn:hover { color: #000; box-shadow: 0 0 20px rgba(0, 242, 234, 0.6); }
+        /* فرم‌ها و کارت‌ها */
+        .glass-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 50px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+        .glass-box:hover { transform: translateY(-5px); border-color: rgba(0, 242, 234, 0.3); }
+        .input-group { margin-bottom: 25px; text-align: right; }
+        .input-group label { display: block; margin-bottom: 10px; color: var(--gray); font-size: 0.9rem; }
+        .input-group input, .input-group textarea, .input-group select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            outline: none;
+            transition: 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--primary); background: rgba(0,0,0,0.5); }
+        /* پنل ادمین */
+        .admin-card {
+            border: 1px solid var(--secondary);
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.2);
+        }
+        .order-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            text-align: right;
+            border-right: 3px solid var(--primary);
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+        
+        /* استایل‌های جدید برای آمار و مدیریت محتوا */
+        .stats-box {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            font-size: 2rem;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .tab-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: #fff;
+            padding: 8px 20px;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        .tab-btn.active { background: var(--primary); color: #000; border-color: var(--primary); }
+        
+        /* استایل عکس‌ها در پنل و سایت */
+        .preview-img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .preview-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        /* فوتر */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .phone {
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .phone:hover { text-shadow: 0 0 15px var(--primary); transform: scale(1.05); }
+        @media (max-width: 768px) {
+            header { padding: 15px; flex-direction: column; gap: 15px; }
+            h1 { font-size: 2.2rem; }
+            nav ul { gap: 15px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- پس‌زمینه متحرک و ذرات -->
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+    <header>
+        <div class="logo">مهندس آرتا اجتماعی</div>
+        <nav>
+            <ul>
+                <li><a onclick="showSection('home')">خانه</a></li>
+                <li><a onclick="showSection('projects')">نمونه کارها</a></li>
+                <li><a onclick="showSection('articles')">مقالات من</a></li>
+                <li><a onclick="showSection('contact')">سفارش سایت</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- خانه -->
+    <section id="home" class="active">
+        <h1>کامپیوتر را بامهندس ارتا اجتماعی اسان تر یاد بگیرید </h1>
+        <p>ما با ترکیب خلاقیت و تکنولوژی، وب‌سایت‌هایی می‌سازیم که کسب‌وکار شما را متحول می‌کنند. طراحی مدرن، سرعت بالا و امنیت کامل.</p>
+        <button class="btn" onclick="showSection('contact')">شروع پروژه</button>
+    </section>
+    
+    <!-- نمونه کارها -->
+    <section id="projects">
+        <h1 style="font-size: 2.5rem;">نمونه کارها</h1>
+        <p style="margin-bottom: 30px;">پروژه‌های انجام شده توسط مهندس آرتا</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; width: 100%; max-width: 1000px;" id="publicProjectsContainer">
+            <!-- نمونه کارها اینجا اضافه می‌شوند -->
+        </div>
+    </section>
+
+    <!-- مقالات -->
+    <section id="articles">
+        <h1 style="font-size: 2.5rem;">مقالات آموزشی و تحلیلی</h1>
+        <p style="margin-bottom: 30px;">تجربیات و آموزش‌های تخصصی</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; width: 100%; max-width: 1000px;" id="publicArticlesContainer">
+            <!-- مقالات اینجا اضافه می‌شوند -->
+        </div>
+    </section>
+    
+    <!-- تماس و سفارش -->
+    <section id="contact">
+        <h1 style="font-size: 2.5rem;">ثبت سفارش</h1>
+        <p>برای مشاوره رایگان و ثبت سفارش فرم زیر را پر کنید.</p>
+        <div class="glass-box">
+            <form id="orderForm">
+                <div class="input-group">
+                    <label>نام شما:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="input-group">
+                    <label>شماره تماس:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="input-group">
+                    <label>توضیحات:</label>
+                    <textarea id="details" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">ارسال درخواست</button>
+            </form>
+        </div>
+        <div style="margin-top: 50px;">
+            <p>تماس مستقیم:</p>
+            <a href="tel:09147782146" class="phone">09147782146</a>
+        </div>
+    </section>
+    
+    <!-- پنل ادمین (مخفی) -->
+    <section id="admin-section">
+        <h1 style="color: var(--secondary);">پنل مدیریت</h1>
+        
+        <!-- فرم ورود -->
+        <div id="loginBox" class="glass-box admin-card">
+            <h3>ورود امن</h3>
+            <div class="input-group" style="margin-top: 20px;">
+                <input type="password" id="adminPass" placeholder="رمز عبور..." style="text-align: center;">
+            </div>
+            <button onclick="checkLogin()" class="btn" style="border-color: var(--secondary); color: var(--secondary);">ورود</button>
+        </div>
+
+        <!-- محتوای پنل بعد از ورود -->
+        <div id="adminPanelContent" style="display: none; width: 100%; max-width: 800px;">
+            
+            <!-- آمار بازدید -->
+            <div class="glass-box" style="margin-bottom: 30px;">
+                <h3>📊 آمار بازدید</h3>
+                <div class="stats-box" id="visitCountDisplay">0</div>
+                <button onclick="resetVisits()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;">ریست شمارنده</button>
+            </div>
+
+            <!-- تب‌های مدیریت محتوا -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="switchTab('orders')">سفارشات</button>
+                <button class="tab-btn" onclick="switchTab('addContent')">افزودن مقاله/نمونه کار</button>
+                <button class="tab-btn" onclick="switchTab('security')">تغییر رمز عبور</button>
+            </div>
+
+            <!-- لیست سفارشات -->
+            <div id="tab-orders">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <h3>سفارشات جدید</h3>
+                    <button onclick="logout()" class="btn" style="font-size: 0.8rem; padding: 5px 15px; border-color: #ff4444; color: #ff4444;">خروج</button>
+                </div>
+                <div id="ordersList"></div>
+            </div>
+
+            <!-- فرم افزودن محتوا -->
+            <div id="tab-addContent" style="display: none;">
+                <div class="glass-box" style="max-width: 100%;">
+                    <h3>افزودن به سایت</h3>
+                    <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 20px;">لطفاً نوع محتوا را انتخاب کنید:</p>
+                    
+                    <div class="input-group">
+                        <label>نوع محتوا:</label>
+                        <!-- پیش‌فرض روی مقاله تنظیم شد -->
+                        <select id="contentType">
+                            <option value="article" selected>مقاله</option>
+                            <option value="project">نمونه کار</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>عنوان:</label>
+                        <input type="text" id="newContentTitle" placeholder="مثلا: آموزش طراحی وب">
+                    </div>
+                    <div class="input-group">
+                        <label>توضیحات:</label>
+                        <textarea id="newContentDesc" rows="3" placeholder="متن مقاله یا توضیحات پروژه..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>آپلود عکس (اختیاری):</label>
+                        <input type="file" id="contentImage" accept="image/*">
+                    </div>
+                    <button onclick="addNewContent()" class="btn">انتشار در سایت</button>
+                </div>
+            </div>
+            
+            <!-- بخش تغییر رمز -->
+            <div id="tab-security" style="display: none;">
+                <div class="glass-box" style="max-width: 100%; border-color: var(--secondary);">
+                    <h3>🔐 امنیت پنل</h3>
+                    <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 20px;">رمز عبور فعلی شما امن است؟ برای تغییر آن اقدام کنید.</p>
+                    <div class="input-group">
+                        <label>رمز عبور جدید:</label>
+                        <input type="password" id="newPassword" placeholder="رمز جدید را وارد کنید">
+                    </div>
+                    <button onclick="changePassword()" class="btn" style="border-color: var(--secondary); color: var(--secondary);">تغییر رمز</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 مهندس آرتا اجتماعی. طراحی شده با html</p>
+    </footer>
+
+    <script>
+        // --- ۱. ایجاد ذرات معلق ---
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.width = p.style.height = Math.random() * 10 + 5 + 'px';
+            p.style.animationDuration = Math.random() * 10 + 10 + 's';
+            p.style.animationDelay = Math.random() * 5 + 's';
+            particlesContainer.appendChild(p);
+        }
+
+        // --- ۲. مدیریت صفحات ---
+        function showSection(id) {
+            document.querySelectorAll('section').forEach(sec => {
+                sec.classList.remove('active');
+                sec.style.display = 'none';
+            });
+            const target = document.getElementById(id);
+            target.style.display = 'flex';
+            setTimeout(() => target.classList.add('active'), 10);
+            window.scrollTo(0, 0);
+        }
+
+        // --- ۳. شمارشگر بازدید (Visit Counter) ---
+        function updateVisitCount() {
+            let count = localStorage.getItem('artaVisits');
+            if (!count) count = 0;
+            count = parseInt(count) + 1;
+            localStorage.setItem('artaVisits', count);
+            document.getElementById('visitCountDisplay').innerText = count;
+        }
+
+        function resetVisits() {
+            if(confirm('آیا مطمئن هستید که می‌خواهید شمارنده را صفر کنید؟')) {
+                localStorage.setItem('artaVisits', 0);
+                updateVisitCount();
+            }
+        }
+
+        // --- ۴. مدیریت سفارشات ---
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const order = {
+                id: Date.now(),
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                details: document.getElementById('details').value,
+                date: new Date().toLocaleDateString('fa-IR')
+            };
+            let orders = JSON.parse(localStorage.getItem('artaOrders')) || [];
+            orders.push(order);
+            localStorage.setItem('artaOrders', JSON.stringify(orders));
+            alert('سفارش شما ثبت شد!');
+            this.reset();
+        });
+
+        // --- ۵. مدیریت محتوا (مقالات و نمونه کارها) ---
+        function loadPublicContent() {
+            const projectsContainer = document.getElementById('publicProjectsContainer');
+            const articlesContainer = document.getElementById('publicArticlesContainer');
+            const contentData = JSON.parse(localStorage.getItem('artaContent')) || [];
+            
+            // پاک کردن محتوای قبلی
+            projectsContainer.innerHTML = '';
+            articlesContainer.innerHTML = '';
+
+            // نمایش آیتم‌های ذخیره شده
+            contentData.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'glass-box preview-card';
+                div.style.padding = '0';
+                div.style.overflow = 'hidden';
+                
+                let imgTag = '';
+                if (item.image) {
+                    imgTag = `<img src="${item.image}" alt="${item.title}">`;
+                } else {
+                    imgTag = `<img src="https://via.placeholder.com/400x200?text=No+Image" alt="No Image">`;
+                }
+
+                div.innerHTML = `
+                    ${imgTag}
+                    <div style="padding: 20px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">${item.title}</h3>
+                        <p style="font-size: 0.9rem;">${item.desc}</p>
+                        <span style="font-size: 0.8rem; color: #666;">${item.type === 'project' ? 'نمونه کار' : 'مقاله'}</span>
+                    </div>
+                `;
+
+                // قرار دادن در کانتینر مربوطه
+                if (item.type === 'project') {
+                    projectsContainer.appendChild(div);
+                } else {
+                    articlesContainer.appendChild(div);
+                }
+            });
+        }
+
+        function addNewContent() {
+            const type = document.getElementById('contentType').value;
+            const title = document.getElementById('newContentTitle').value;
+            const desc = document.getElementById('newContentDesc').value;
+            const fileInput = document.getElementById('contentImage');
+
+            if(!title || !desc) {
+                alert('لطفا عنوان و توضیحات را وارد کنید');
+                return;
+            }
+
+            // پردازش عکس
+            let imageData = null;
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imageData = e.target.result;
+                    saveContent(type, title, desc, imageData);
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                saveContent(type, title, desc, null);
+            }
+        }
+
+        function saveContent(type, title, desc, image) {
+            const newItem = { type, title, desc, image, id: Date.now() };
+            let contentData = JSON.parse(localStorage.getItem('artaContent')) || [];
+            contentData.push(newItem);
+            localStorage.setItem('artaContent', JSON.stringify(contentData));
+
+            alert('محتوا با موفقیت منتشر شد!');
+            // پاک کردن فرم
+            document.getElementById('newContentTitle').value = '';
+            document.getElementById('newContentDesc').value = '';
+            document.getElementById('contentImage').value = '';
+            
+            loadPublicContent(); 
+        }
+
+        // --- ۶. لاجیک پنل ادمین ---
+        
+        // میانبر Ctrl+Alt+M
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.altKey && e.key === 'm') {
+                e.preventDefault();
+                showSection('admin-section');
+                checkLoginStatus();
+                updateVisitCount(); // آپدیت شمارنده
+            }
+        });
+
+        function checkLoginStatus() {
+            // دریافت رمز فعلی از حافظه یا استفاده از پیش‌فرض
+            const currentPass = localStorage.getItem('artaAdminPass') || '1234';
+            
+            if (localStorage.getItem('artaAdminLogged') === 'true') {
+                document.getElementById('loginBox').style.display = 'none';
+                document.getElementById('adminPanelContent').style.display = 'block';
+                showOrders();
+            } else {
+                document.getElementById('loginBox').style.display = 'block';
+                document.getElementById('adminPanelContent').style.display = 'none';
+                // ذخیره رمز در اینپوت برای راحتی (اختیاری)
+                document.getElementById('adminPass').value = ''; 
+            }
+        }
+
+        function checkLogin() {
+            const inputPass = document.getElementById('adminPass').value;
+            const currentPass = localStorage.getItem('artaAdminPass') || '1234';
+
+            if (inputPass === currentPass) {
+                localStorage.setItem('artaAdminLogged', 'true');
+                checkLoginStatus();
+            } else {
+                alert('رمز اشتباه است!');
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('artaAdminLogged');
+            showSection('home');
+        }
+
+        function changePassword() {
+            const newPass = document.getElementById('newPassword').value;
+            if(newPass.length < 4) {
+                alert('رمز عبور باید حداقل ۴ کاراکتر باشد.');
+                return;
+            }
+            localStorage.setItem('artaAdminPass', newPass);
+            alert('رمز عبور با موفقیت تغییر کرد!');
+            document.getElementById('newPassword').value = '';
+        }
+
+        function showOrders() {
+            const orders = JSON.parse(localStorage.getItem('artaOrders')) || [];
+            const list = document.getElementById('ordersList');
+            list.innerHTML = '';
+            if (orders.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: #666;">سفارشی نیست.</p>';
+                return;
+            }
+            orders.reverse().forEach(o => {
+                list.innerHTML += `
+                    <div class="order-item">
+                        <div style="display: flex; justify-content: space-between;">
+                            <h4 style="color: var(--primary);">${o.name}</h4>
+                            <button onclick="deleteOrder(${o.id})" style="background: #ff4444; border: none; color: white; padding: 5px 10px; border-radius: 4px; cursor: pointer;">حذف</button>
+                        </div>
+                        <p style="margin: 5px 0;">📞 ${o.phone}</p>
+                        <p style="margin: 5px 0; font-size: 0.9rem; color: #aaa;">📝 ${o.details}</p>
+                        <p style="font-size: 0.8rem; color: #666;">📅 ${o.date}</p>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteOrder(id) {
+            if(confirm('حذف شود؟')) {
+                let orders = JSON.parse(localStorage.getItem('artaOrders')) || [];
+                orders = orders.filter(o => o.id !== id);
+                localStorage.setItem('artaOrders', JSON.stringify(orders));
+                showOrders();
+            }
+        }
+
+        function switchTab(tabName) {
+            // مدیریت تب‌ها
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('tab-orders').style.display = 'none';
+            document.getElementById('tab-addContent').style.display = 'none';
+            document.getElementById('tab-security').style.display = 'none';
+
+            if(tabName === 'orders') {
+                document.getElementById('tab-orders').style.display = 'block';
+            } else if (tabName === 'addContent') {
+                document.getElementById('tab-addContent').style.display = 'block';
+            } else if (tabName === 'security') {
+                document.getElementById('tab-security').style.display = 'block';
+            }
+        }
+
+        // بارگذاری اولیه محتوا هنگام باز شدن سایت
+        window.onload = function() {
+            loadPublicContent();
+        }
+    </script>
+</body>
+</html>
