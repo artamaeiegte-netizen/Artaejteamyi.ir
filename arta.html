@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="وب‌سایت رسمی مهندس آرتا اجتماعی - طراحی مدرن، سریع و امن وب‌سایت‌های تخصصی و آموزش کامپیوتر">
-    <title>مهندس آرتا اجتماعی | طراح وب</title>
+    <meta property="og:title" content="مهندس آرتا اجتماعی | طراح وب و مدرس کامپیوتر">
+    <meta property="og:description" content="طراحی مدرن، سریع و امن وب‌سایت‌های تخصصی و آموزش کامپیوتر">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230a0a0a%22/><text x=%2250%22 y=%2272%22 text-anchor=%22middle%22 font-family=%22Tahoma,Arial,sans-serif%22 font-size=%2266%22 font-weight=%22900%22 fill=%22%2300f2ea%22>آ</text></svg>">
+    <title>مهندس آرتا اجتماعی | طراح وب و مدرس کامپیوتر</title>
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:locale" content="fa_IR">
+    <meta name="twitter:card" content="summary">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"ProfessionalService","name":"مهندس آرتا اجتماعی","description":"طراحی وب‌سایت و آموزش کامپیوتر","telephone":"+989147782146","email":"artamaeiegte@gmail.com","address":{"@type":"PostalAddress","addressLocality":"تبریز","addressCountry":"IR"}}
+    </script>
+    <noscript><style>section{display:flex !important;opacity:1 !important;transform:none !important;min-height:auto}</style></noscript>
     <style>
-        @import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+        
         :root {
             --primary: #00f2ea;
             --secondary: #ff0055;
@@ -15,7 +28,7 @@
             --text: #fff;
             --gray: #b3b3b3;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Vazirmatn', Tahoma, Arial, sans-serif; }
         body {
             background-color: var(--bg-dark);
             color: var(--text);
@@ -31,7 +44,7 @@
             height: 100%;
             background: linear-gradient(45deg, #0a0a0a, #1a0b14, #0b141a, #0a0a0a);
             background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            
             z-index: -2;
         }
         @keyframes gradientBG {
@@ -61,6 +74,22 @@
             50% { opacity: 1; }
             100% { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
+        /* لینک پرش به محتوای اصلی (دسترسی‌پذیری) */
+        .skip-link {
+            position: absolute;
+            top: -60px;
+            left: 10px;
+            background: var(--primary);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            z-index: 2000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: top 0.2s;
+        }
+        .skip-link:focus { top: 10px; }
+
         /* هدر */
         header {
             position: fixed;
@@ -107,6 +136,7 @@
         /* بخش‌ها */
         section {
             min-height: 100vh;
+            min-height: 100dvh;
             padding: 120px 20px 50px;
             display: none;
             flex-direction: column;
@@ -132,14 +162,8 @@
         h2 { font-size: 2.5rem; }
         
         /* افکت تایپ خودکار متن خط اول */
-        .typewriter {
-            overflow: hidden;
-            border-left: .15em solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto 20px;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
+        .typewriter { display: block; margin: 0 auto 20px; animation: typing 2.5s steps(30, end) both; }
+        @keyframes typing { from { clip-path: inset(0 0 0 100%) } to { clip-path: inset(0 0 0 0) } }
         @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary); } }
 
         p { color: var(--gray); max-width: 600px; margin-bottom: 40px; font-size: 1.2rem; line-height: 1.8; }
@@ -256,7 +280,20 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: right;
         }
-        .testimonial-card h4 { color: var(--primary); margin-bottom: 10px; }
+        .testimonial-card h4 { color: var(--primary); margin-bottom: 10px; display:flex; align-items:center; gap:10px; }
+        .avatar-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
         .testimonial-card p { font-size: 0.95rem; margin-bottom: 0; color: #ddd; }
 
         /* بخش تبلیغات و حامیان شیک */
@@ -314,7 +351,7 @@
             outline: none;
             transition: 0.3s;
         }
-        .input-group input:focus, .input-group textarea:focus { border-color: var(--primary); background: rgba(0,0,0,0.5); }
+        .input-group input:focus, .input-group textarea:focus, .input-group select:focus { border-color: var(--primary); background: rgba(0,0,0,0.5); }
         
         /* پنل ادمین */
         .admin-card { border: 1px solid var(--secondary); box-shadow: 0 0 20px rgba(255, 0, 85, 0.2); }
@@ -352,62 +389,174 @@
         .phone { font-size: 1.5rem; color: var(--primary); text-decoration: none; display: inline-block; transition: 0.3s; }
         .phone:hover { text-shadow: 0 0 15px var(--primary); }
 
+        /* فوکوس قابل مشاهده برای کاربران کیبورد */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        /* احترام به تنظیم کاهش انیمیشن سیستم کاربر */
+        @media (prefers-reduced-motion: reduce) {
+            .animated-bg, .particle, .typewriter, section, .feature-card, .btn {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
         @media (max-width: 768px) {
-            header { padding: 15px; flex-direction: column; gap: 15px; }
+            header { padding: 12px 15px; flex-wrap: wrap; }
             h1 { font-size: 2.2rem; }
             h2 { font-size: 1.8rem; }
-            nav ul { gap: 15px; font-size: 0.9rem; }
+            nav ul { flex-direction: column; gap: 0; font-size: 1rem; }
+        }
+    
+        main:focus { outline: none; }
+        .nav-toggle { display: none; background: transparent; border: 1px solid #444; color: #fff; border-radius: 8px; padding: 6px 12px; font-size: 1.3rem; cursor: pointer; }
+        .hp { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+        .note { font-size: 0.8rem !important; margin: 0 0 15px !important; color: #888 !important; max-width: none; line-height: 1.7; }
+        .feature-card p { max-width: none; }
+        #toast { position: fixed; bottom: 90px; right: 50%; transform: translateX(50%) translateY(20px); background: #111; border: 1px solid var(--primary); color: #fff; padding: 12px 22px; border-radius: 30px; opacity: 0; pointer-events: none; transition: 0.3s; z-index: 3000; max-width: 90vw; text-align: center; }
+        #toast.show { opacity: 1; transform: translateX(50%) translateY(0); }
+        .step-num { display: inline-flex; width: 36px; height: 36px; border-radius: 50%; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #000; font-weight: 900; margin-bottom: 10px; }
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav { display: none; width: 100%; max-height: 70vh; overflow-y: auto; }
+            nav.open { display: block; }
+            nav li a { display: block; padding: 12px 4px; border-top: 1px solid rgba(255,255,255,0.06); }
+            nav a::after { display: none; }
+            .logo { font-size: 1.1rem; }
+            .glass-box { padding: 25px; }
+            .particles { display: none; }
+            .support-wrapper { bottom: 10px; left: 10px; }
+            .support-btn { padding: 10px 16px; font-size: 0.9rem; }
+        }
+    
+        /* ===== بهینه‌سازی موبایل ===== */
+        html { -webkit-text-size-adjust: 100%; }
+        a, button { -webkit-tap-highlight-color: transparent; }
+        @media (max-width: 768px) {
+            section { padding: 90px 16px 110px; min-height: auto; min-height: 100dvh; }
+            h1 { font-size: 1.9rem; line-height: 1.4; }
+            h2 { font-size: 1.6rem; }
+            p { font-size: 1.02rem; max-width: 100%; margin-bottom: 28px; }
+            .btn { width: 100%; max-width: 340px; padding: 14px 20px; font-size: 1.05rem; margin: 6px 0; min-height: 48px; }
+            .btn:hover { color: var(--primary); box-shadow: none; }
+            .btn:hover::before { width: 0; }
+            .input-group { margin-bottom: 18px; }
+            .input-group input, .input-group textarea, .input-group select { font-size: 16px; padding: 14px; min-height: 48px; }
+            .glass-box:hover { transform: none; }
+            .features-grid, .testimonial-grid { gap: 14px; }
+            .ads-grid { gap: 12px; }
+            .ad-banner { min-width: 0; width: 100%; padding: 14px 20px; }
+            .nav-toggle { min-width: 44px; min-height: 44px; }
+            nav li a { padding: 14px 4px; font-size: 1.05rem; }
+            .support-wrapper { position: fixed; left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); flex-direction: row; gap: 10px; }
+            .support-wrapper > * { flex: 1; text-align: center; padding: 13px 10px; font-size: 0.95rem; border-radius: 26px; min-height: 48px; }
+            footer { padding-bottom: 100px; }
+            .about-footer { gap: 25px; text-align: center; }
+            .phone { font-size: 1.3rem; }
+            .admin-tabs .tab-btn { padding: 10px 16px; min-height: 44px; }
+        }
+        @media (max-width: 360px) {
+            h1 { font-size: 1.65rem; }
+            .logo { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link" onclick="document.getElementById('main-content').focus(); return false;">پرش به محتوای اصلی</a>
     <div class="animated-bg"></div>
     <div class="particles" id="particles"></div>
 
     <div class="support-wrapper">
-        <div class="support-status">
-            <span class="status-dot"></span>
-            پشتیبانان آنلاین هستند
-        </div>
-        <button class="support-btn" onclick="showSection('support')">پشتیبانی ۲۴ ساعته</button>
+        
+        <a class="support-btn" href="https://wa.me/989147782146" target="_blank" rel="noopener" style="text-decoration:none; display:inline-block; margin-bottom:8px;">💬 چت واتساپ</a>
+        <button class="support-btn" onclick="showSection('support')">ارسال تیکت پشتیبانی</button>
     </div>
 
     <header>
-        <div class="logo">مهندس آرتا اجتماعی</div>
-        <nav>
+        <div class="logo" style="display:flex; align-items:center; gap:10px;">
+            <svg width="42" height="42" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0;">
+                <defs>
+                    <linearGradient id="logoRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#00f2ea"/>
+                        <stop offset="100%" stop-color="#ff0055"/>
+                    </linearGradient>
+                    <linearGradient id="logoLetterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#7dfff9"/>
+                        <stop offset="55%" stop-color="#00f2ea"/>
+                        <stop offset="100%" stop-color="#ff0055"/>
+                    </linearGradient>
+                    <filter id="logoGlow" x="-60%" y="-60%" width="220%" height="220%">
+                        <feGaussianBlur stdDeviation="7" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                    <filter id="logoSoftGlow" x="-60%" y="-60%" width="220%" height="220%">
+                        <feGaussianBlur stdDeviation="3" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+                <g stroke="url(#logoRingGrad)" stroke-width="2.5" fill="none" opacity="0.9">
+                    <line x1="120" y1="50" x2="120" y2="20"/><line x1="170" y1="50" x2="170" y2="20"/>
+                    <line x1="230" y1="50" x2="230" y2="20"/><line x1="280" y1="50" x2="280" y2="20"/>
+                    <line x1="120" y1="350" x2="120" y2="380"/><line x1="170" y1="350" x2="170" y2="380"/>
+                    <line x1="230" y1="350" x2="230" y2="380"/><line x1="280" y1="350" x2="280" y2="380"/>
+                    <line x1="50" y1="120" x2="20" y2="120"/><line x1="50" y1="170" x2="20" y2="170"/>
+                    <line x1="50" y1="230" x2="20" y2="230"/><line x1="50" y1="280" x2="20" y2="280"/>
+                    <line x1="350" y1="120" x2="380" y2="120"/><line x1="350" y1="170" x2="380" y2="170"/>
+                    <line x1="350" y1="230" x2="380" y2="230"/><line x1="350" y1="280" x2="380" y2="280"/>
+                </g>
+                <polygon points="95,50 305,50 350,95 350,305 305,350 95,350 50,305 50,95"
+                         fill="rgba(10,10,10,0.55)" stroke="url(#logoRingGrad)" stroke-width="4" filter="url(#logoSoftGlow)"/>
+                <text x="200" y="255" text-anchor="middle" font-family="Vazirmatn, Tahoma, Arial, sans-serif"
+                      font-size="190" font-weight="900" fill="url(#logoLetterGrad)" filter="url(#logoGlow)">آ</text>
+            </svg>
+            <span>مهندس آرتا اجتماعی</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="منو" aria-expanded="false" aria-controls="mainNav" onclick="toggleMenu()">☰</button>
+        <nav id="mainNav" aria-label="منوی اصلی">
             <ul>
-                <li><a onclick="showSection('home')">خانه</a></li>
-                <li><a onclick="showSection('projects')">نمونه کارها</a></li>
-                <li><a onclick="showSection('blog')">وبلاگ</a></li>
-                <li><a onclick="showSection('articles')">مقالات</a></li>
-                <li><a onclick="showSection('contact')">سفارش سایت</a></li>
-                <li><a onclick="showSection('testimonials')">نظرات</a></li>
+                <li><a href="#home" onclick="return showSection('home')">خانه</a></li>
+                <li><a href="#projects" onclick="return showSection('projects')">نمونه کارها</a></li>
+                <li><a href="#courses" onclick="return showSection('courses')">آموزش کامپیوتر</a></li>
+                <li><a href="#pricing" onclick="return showSection('pricing')">تعرفه‌ها</a></li>
+                <li><a href="#blog" onclick="return showSection('blog')">وبلاگ</a></li>
+                <li><a href="#articles" onclick="return showSection('articles')">مقالات</a></li>
+                <li><a href="#about" onclick="return showSection('about')">درباره من</a></li>
+                <li><a href="#faq" onclick="return showSection('faq')">سوالات متداول</a></li>
+                <li><a href="#contact" onclick="return showSection('contact')">سفارش سایت</a></li>
+                <li><a href="#testimonials" onclick="return showSection('testimonials')">نظرات</a></li>
             </ul>
         </nav>
     </header>
+    <main id="main-content" tabindex="-1">
     
     <section id="home">
         <div class="typewriter">
-            <h1>کامپیوتر را آسان‌تر یاد بگیرید</h1>
+            <h1>طراحی وب‌سایت و آموزش کامپیوتر</h1>
         </div>
-        <p>ما با ترکیب خلاقیت و تکنولوژی، وب‌سایت‌هایی می‌سازیم که کسب‌وکار شما را متحول می‌کنند. طراحی مدرن، سرعت بالا و امنیت کامل.</p>
-        
+        <p>مهندس آرتا اجتماعی دو خدمت اصلی ارائه می‌ده: <strong style="color:var(--primary);">طراحی وب‌سایت حرفه‌ای</strong> برای کسب‌وکارها و <strong style="color:var(--primary);">آموزش کامپیوتر</strong> از پایه تا پیشرفته.</p>
+
+        <div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center; margin-bottom:20px;">
+            <button class="btn" onclick="showSection('contact')">سفارش طراحی سایت</button>
+            <button class="btn" onclick="showSection('courses')">ثبت‌نام دوره‌های آموزشی</button>
+    
+        </div>
+
         <div class="features-grid">
             <div class="feature-card">
-                <h3>⚡ سرعت فوق‌العاده</h3>
-                <p style="font-size:0.9rem; margin:0;">بهینه‌سازی کامل کدها برای بالاترین سرعت لود ممکن.</p>
+                <h3>⚡ سرعت بالا</h3>
+                <p style="font-size:0.9rem; margin:0;">کدنویسی بهینه و سبک برای لود سریع‌تر صفحات.</p>
             </div>
             <div class="feature-card">
-                <h3>🔒 امنیت تضمینی</h3>
-                <p style="font-size:0.9rem; margin:0;">پیاده‌سازی پروتکل‌های امنیتی روز دنیا روی پروژه‌ها.</p>
+                <h3>🔒 امنیت و پایداری</h3>
+                <p style="font-size:0.9rem; margin:0;">رعایت اصول امنیتی استاندارد (HTTPS، اعتبارسنجی ورودی‌ها) در پروژه‌ها.</p>
             </div>
             <div class="feature-card">
                 <h3>🎨 طراحی مدرن</h3>
                 <p style="font-size:0.9rem; margin:0;">رابط کاربری کاستوم و هماهنگ با سلیقه و هویت برند شما.</p>
             </div>
         </div>
-        
-        <button class="btn" onclick="showSection('contact')" style="margin-top: 40px;">شروع پروژه جدید</button>
     </section>
 
     <section id="testimonials">
@@ -415,25 +564,34 @@
         <p>رضایت شما بزرگترین سرمایه ماست</p>
         <div class="testimonial-grid">
             <div class="testimonial-card">
-                <h4>رضا حسینی</h4>
+                <h4><span class="avatar-circle">ا</span>ارسام آقایی</h4>
                 <p>"طراحی سایت فروشگاهی من واقعا عالی بود. سرعت لود و امنیت سایت حرف نداره. ممنون از مهندس اجتماعی."</p>
             </div>
             <div class="testimonial-card">
-                <h4>سارا محمدی</h4>
+                <h4><span class="avatar-circle">ص</span>صدرا باقری </h4>
                 <p>"بهترین مدرس کامپیوتری که تا حالا داشتم. مطالب رو خیلی ساده و کاربردی توضیح میدن."</p>
             </div>
             <div class="testimonial-card">
-                <h4>علی رحیمی</h4>
-                <p>"پشتیبانی ۲۴ ساعته واقعی! هر مشکلی داشتم در سریع‌ترین زمان ممکن حل شد. پیشنهاد می‌کنم حتما همکاری کنید."</p>
+                <h4><span class="avatar-circle">ا</span>اروین دانایی </h4>
+                <p>"پشتیبانی سریع و واقعی! هر مشکلی داشتم در سریع‌ترین زمان ممکن حل شد. پیشنهاد می‌کنم حتما همکاری کنید."</p>
             </div>
         </div>
     </section>
 
     <section id="support">
-        <h2>مرکز پشتیبانی ۲۴ ساعته</h2>
+        <h2>مرکز پشتیبانی</h2>
         <div class="glass-box">
-            <p>کارشناسان ما آماده پاسخگویی به مشکلات فنی شما هستند.</p>
+            <p>مشکل فنی‌ت رو بنویس؛ تیکت از طریق واتساپ برام ارسال می‌شه.</p>
             <form id="ticketForm">
+                <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+                <div class="input-group">
+                    <label for="tName">نام شما:</label>
+                    <input type="text" id="tName" required autocomplete="name">
+                </div>
+                <div class="input-group">
+                    <label for="tPhone">شماره تماس:</label>
+                    <input type="tel" id="tPhone" required inputmode="tel" autocomplete="tel" placeholder="مثلا 09123456789">
+                </div>
                 <div class="input-group">
                     <label for="ticketType">نوع مشکل:</label>
                     <select id="ticketType">
@@ -446,6 +604,7 @@
                     <label for="ticketDetails">توضیحات مشکل:</label>
                     <textarea id="ticketDetails" placeholder="توضیحات خود را اینجا بنویسید..." rows="5" required></textarea>
                 </div>
+                <p class="note">اطلاعات شما فقط برای پاسخ‌گویی به همین درخواست استفاده می‌شه. با زدن دکمه، واتساپ باز می‌شه و باید پیام رو ارسال کنی.</p>
                 <button type="submit" class="btn" style="width: 100%;">ارسال تیکت پشتیبانی</button>
             </form>
         </div>
@@ -471,57 +630,54 @@
         <h2>ثبت سفارش</h2>
         <div class="glass-box">
             <form id="orderForm">
+                <div class="hp" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+                <div class="input-group">
+                    <label for="service">نوع درخواست:</label>
+                    <select id="service">
+                        <option value="طراحی وب‌سایت">طراحی وب‌سایت</option>
+                        <option value="آموزش کامپیوتر">آموزش کامپیوتر</option>
+                        <option value="مشاوره">مشاوره</option>
+                    </select>
+                </div>
                 <div class="input-group">
                     <label for="name">نام شما:</label>
                     <input type="text" id="name" required>
                 </div>
                 <div class="input-group">
                     <label for="phone">شماره تماس:</label>
-                    <input type="tel" id="phone" required>
+                    <input type="tel" id="phone" required inputmode="tel" autocomplete="tel" placeholder="مثلا 09123456789">
                 </div>
                 <div class="input-group">
                     <label for="details">توضیحات:</label>
                     <textarea id="details" rows="4" required></textarea>
                 </div>
+                <p class="note">اطلاعات شما فقط برای پاسخ‌گویی به همین درخواست استفاده می‌شه. با زدن دکمه، واتساپ باز می‌شه و باید پیام رو ارسال کنی.</p>
                 <button type="submit" class="btn" style="width: 100%;">ارسال درخواست</button>
             </form>
         </div>
     </section>
 
     <section id="admin-section">
-        <h2 style="color: var(--secondary);">پنل مدیریت هوشمند</h2>
-        
+        <h2 style="color: var(--secondary);">پنل مدیریت</h2>
         <div id="loginBox" class="glass-box admin-card">
-            <h3>ورود امن ادمین</h3>
+            <h3 id="loginHint">ورود ادمین</h3>
             <div class="input-group" style="margin-top: 20px;">
-                <input type="password" id="adminPass" placeholder="رمز عبور..." style="text-align: center;">
+                <label for="adminPass" class="hp">رمز عبور</label>
+                <input type="password" id="adminPass" placeholder="رمز عبور..." autocomplete="current-password" style="text-align: center;" onkeydown="if(event.key==='Enter')checkLogin()">
             </div>
             <button onclick="checkLogin()" class="btn" style="border-color: var(--secondary); color: var(--secondary); width:100%;">ورود</button>
         </div>
 
         <div id="adminPanelContent" style="display: none; width: 100%; max-width: 800px;">
-            <div class="glass-box" style="margin-bottom: 30px;">
-                <h3>📊 آمار بازدید</h3>
-                <div class="stats-box" id="visitCountDisplay">0</div>
-                <button onclick="resetVisits()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem;">ریست شمارنده</button>
-            </div>
-
+            <p class="note">توجه: این پنل بدون سرور کار می‌کنه؛ تغییرات فقط در همین مرورگر ذخیره و برای خودت نمایش داده می‌شن. برای انتشار برای همه، محتوا و بنرها رو در بخش SITE_CONFIG انتهای فایل بنویس.</p>
             <div class="admin-tabs">
-                <button class="tab-btn active" onclick="switchTab('orders')">سفارشات و تیکت‌ها</button>
-                <button class="tab-btn" onclick="switchTab('addContent')">افزودن محتوا</button>
-                <button class="tab-btn" onclick="switchTab('manageAds')">مدیریت تبلیغات</button>
-                <button class="tab-btn" onclick="switchTab('security')">امنیت</button>
+                <button class="tab-btn active" onclick="switchTab('addContent', this)">افزودن محتوا</button>
+                <button class="tab-btn" onclick="switchTab('manageAds', this)">مدیریت تبلیغات</button>
+                <button class="tab-btn" onclick="switchTab('security', this)">امنیت</button>
+                <button class="tab-btn" onclick="logout()" style="border-color:#ff4444; color:#ff4444;">خروج</button>
             </div>
 
-            <div id="tab-orders">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 20px; align-items:center;">
-                    <h3>سفارشات جدید و تیکت‌های پشتیبانی</h3>
-                    <button onclick="logout()" class="btn" style="font-size: 0.8rem; padding: 5px 15px; border-color: #ff4444; color: #ff4444;">خروج</button>
-                </div>
-                <div id="ordersList"></div>
-            </div>
-
-            <div id="tab-addContent" style="display: none;">
+            <div id="tab-addContent">
                 <div class="glass-box" style="max-width: 100%;">
                     <h3>افزودن به سایت</h3>
                     <div class="input-group">
@@ -544,7 +700,8 @@
                         <label for="contentImage">آپلود عکس:</label>
                         <input type="file" id="contentImage" accept="image/*">
                     </div>
-                    <button onclick="addNewContent()" class="btn" style="width:100%;">انتشار در سایت</button>
+                    <button onclick="addNewContent()" class="btn" style="width:100%;">ذخیره در پیش‌نمایش</button>
+                    <button onclick="clearLocalContent()" class="tab-btn" style="margin-top:15px;">پاک‌کردن محتوای محلی</button>
                 </div>
             </div>
 
@@ -553,47 +710,29 @@
                     <h3>🔗 مدیریت لینک‌ها و متن تبلیغات</h3>
                     <div style="border-bottom: 1px dashed #444; padding-bottom: 15px; margin-bottom: 15px;">
                         <h4>بنر اول</h4>
-                        <div class="input-group">
-                            <label>متن بنر:</label>
-                            <input type="text" id="adText1" value="محل تبلیغات شما">
-                        </div>
-                        <div class="input-group">
-                            <label>لینک بنر (با http:// یا https://):</label>
-                            <input type="url" id="adLink1" placeholder="https://example.com">
-                        </div>
+                        <div class="input-group"><label for="adText1">متن بنر:</label><input type="text" id="adText1"></div>
+                        <div class="input-group"><label for="adLink1">لینک بنر (با http:// یا https://):</label><input type="url" id="adLink1" placeholder="https://example.com"></div>
                     </div>
                     <div style="border-bottom: 1px dashed #444; padding-bottom: 15px; margin-bottom: 15px;">
                         <h4>بنر دوم</h4>
-                        <div class="input-group">
-                            <label>متن بنر:</label>
-                            <input type="text" id="adText2" value="شرکت توسعه وب تک">
-                        </div>
-                        <div class="input-group">
-                            <label>لینک بنر:</label>
-                            <input type="url" id="adLink2" placeholder="https://example.com">
-                        </div>
+                        <div class="input-group"><label for="adText2">متن بنر:</label><input type="text" id="adText2"></div>
+                        <div class="input-group"><label for="adLink2">لینک بنر:</label><input type="url" id="adLink2" placeholder="https://example.com"></div>
                     </div>
                     <div style="padding-bottom: 15px; margin-bottom: 15px;">
                         <h4>بنر سوم</h4>
-                        <div class="input-group">
-                            <label>متن بنر:</label>
-                            <input type="text" id="adText3" value="آکادمی هوش مصنوعی">
-                        </div>
-                        <div class="input-group">
-                            <label>لینک بنر:</label>
-                            <input type="url" id="adLink3" placeholder="https://example.com">
-                        </div>
+                        <div class="input-group"><label for="adText3">متن بنر:</label><input type="text" id="adText3"></div>
+                        <div class="input-group"><label for="adLink3">لینک بنر:</label><input type="url" id="adLink3" placeholder="https://example.com"></div>
                     </div>
                     <button onclick="updateAdsData()" class="btn" style="width:100%;">ذخیره تغییرات تبلیغات</button>
                 </div>
             </div>
-            
+
             <div id="tab-security" style="display: none;">
                 <div class="glass-box" style="max-width: 100%; border-color: var(--secondary);">
                     <h3>🔐 تغییر رمز عبور</h3>
                     <div class="input-group">
-                        <label for="newPassword">رمز عبور جدید:</label>
-                        <input type="password" id="newPassword">
+                        <label for="newPassword">رمز عبور جدید (حداقل ۸ کاراکتر):</label>
+                        <input type="password" id="newPassword" autocomplete="new-password">
                     </div>
                     <button onclick="changePassword()" class="btn" style="border-color: var(--secondary); color: var(--secondary); width:100%;">تغییر رمز</button>
                 </div>
@@ -601,316 +740,385 @@
         </div>
     </section>
 
+    <section id="courses">
+        <h2>آموزش کامپیوتر</h2>
+        <p>دوره‌ها از پایه تا پیشرفته، به‌صورت حضوری و آنلاین و متناسب با سطح شما برگزار می‌شن.</p>
+        <div class="features-grid" style="max-width:1000px;">
+            <div class="feature-card">
+                <h3>🌱 مقدماتی</h3>
+                <p style="font-size:0.9rem; margin:0 0 15px;">آشنایی با کامپیوتر، ویندوز، اینترنت و نرم‌افزارهای کاربردی.</p>
+                <button class="btn" onclick="enroll('دوره مقدماتی')">ثبت‌نام</button>
+            </div>
+            <div class="feature-card">
+                <h3>🧩 متوسط</h3>
+                <p style="font-size:0.9rem; margin:0 0 15px;">مهارت‌های کاربردی‌تر و آشنایی با مبانی طراحی وب.</p>
+                <button class="btn" onclick="enroll('دوره متوسط')">ثبت‌نام</button>
+            </div>
+            <div class="feature-card">
+                <h3>🚀 پیشرفته</h3>
+                <p style="font-size:0.9rem; margin:0 0 15px;">یادگیری پروژه‌محور و آماده‌سازی برای بازار کار.</p>
+                <button class="btn" onclick="enroll('دوره پیشرفته')">ثبت‌نام</button>
+            </div>
+        </div>
+        <p style="margin-top:30px; font-size:0.95rem;">💡 سرفصل‌ها، زمان‌بندی و شهریه دقیق رو بعد از ثبت‌نام اولیه و بررسی سطح شما اعلام می‌کنم.</p>
+    </section>
+
+    <section id="about">
+        <h2>درباره من</h2>
+        <p>مهندس آرتا اجتماعی، متخصص طراحی وب و مدرس علوم کامپیوتر؛ با دو خدمت اصلی: طراحی و توسعه وب‌سایت، و آموزش کامپیوتر.</p>
+        <h3 style="color:var(--primary); margin-bottom:10px;">مراحل همکاری</h3>
+        <div class="features-grid" style="max-width:1000px;">
+            <div class="feature-card"><span class="step-num">۱</span><h3>مشاوره</h3><p style="font-size:0.9rem; margin:0;">بررسی نیاز و هدف شما.</p></div>
+            <div class="feature-card"><span class="step-num">۲</span><h3>طراحی و پیاده‌سازی</h3><p style="font-size:0.9rem; margin:0;">ساخت پروژه مطابق هویت برند شما.</p></div>
+            <div class="feature-card"><span class="step-num">۳</span><h3>تست و تحویل</h3><p style="font-size:0.9rem; margin:0;">بررسی نهایی و تحویل پروژه.</p></div>
+            <div class="feature-card"><span class="step-num">۴</span><h3>پشتیبانی</h3><p style="font-size:0.9rem; margin:0;">پاسخ‌گویی از طریق تیکت یا واتساپ.</p></div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <h2>تعرفه‌ها و پکیج‌ها</h2>
+        <p>یکی از پکیج‌های زیر رو انتخاب کن یا برای یک پیشنهاد اختصاصی باهام تماس بگیر.</p>
+        <div class="features-grid" style="max-width:1000px;">
+            <div class="feature-card">
+                <h3>🌱 پکیج شروع</h3>
+                <p style="font-size:0.9rem; margin:0 0 15px;">وب‌سایت تک‌صفحه‌ای معرفی کسب‌وکار، طراحی واکنش‌گرا، مناسب کسب‌وکارهای کوچک و شخصی.</p>
+                <button class="btn" onclick="showSection('contact')">درخواست مشاوره</button>
+            </div>
+            <div class="feature-card">
+                <h3>🚀 پکیج حرفه‌ای</h3>
+                <p style="font-size:0.9rem; margin:0 0 15px;">وب‌سایت چندصفحه‌ای با پنل مدیریت محتوا، بهینه‌سازی سئو و سرعت بالا.</p>
+                <button class="btn" onclick="showSection('contact')">درخواست مشاوره</button>
+            </div>
+            <div class="feature-card">
+                <h3>🏆 پکیج فروشگاهی</h3>
+                <p style="font-size:0.9rem; margin:0 0 15px;">فروشگاه اینترنتی کامل با درگاه پرداخت، مدیریت سفارش و پشتیبانی اختصاصی.</p>
+                <button class="btn" onclick="showSection('contact')">درخواست مشاوره</button>
+            </div>
+        </div>
+        <p style="margin-top:30px; font-size:0.95rem;">💡 قیمت دقیق بسته به نیاز پروژه متفاوته؛ برای اطلاع از قیمت نهایی فرم سفارش رو پر کن تا باهات تماس بگیرم.</p>
+    </section>
+
+    <section id="faq">
+        <h2>سوالات متداول</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <h4>ساخت سایت چقدر طول می‌کشه؟</h4>
+                <p>بسته به نوع پکیج، معمولاً بین چند روز تا چند هفته زمان می‌بره.</p>
+            </div>
+            <div class="testimonial-card">
+                <h4>آموزش کامپیوتر به چه صورته؟</h4>
+                <p>دوره‌ها هم به‌صورت حضوری و هم آنلاین برگزار می‌شن و متناسب با سطح شما تنظیم می‌شن.</p>
+            </div>
+            <div class="testimonial-card">
+                <h4>بعد از تحویل سایت، پشتیبانی هست؟</h4>
+                <p>بله، از طریق تیکت یا واتساپ پشتیبانی می‌شید و در اولین فرصت پاسخ می‌دم.</p>
+            </div>
+        </div>
+    </section>
+    </main>
+
     <footer>
         <div class="ads-section">
             <div class="ads-title">برندهای همکار و حامیان تجاری</div>
             <div class="ads-grid">
-                <a id="adBanner1" target="_blank" class="ad-banner">محل تبلیغات شما</a>
-                <a id="adBanner2" target="_blank" class="ad-banner">شرکت توسعه وب تک</a>
-                <a id="adBanner3" target="_blank" class="ad-banner">آکادمی هوش مصنوعی</a>
+                <a id="adBanner1" target="_blank" class="ad-banner">مدرسه مشکات تبریز</a>
+                <a id="adBanner2" target="_blank" class="ad-banner">فروشگاه arsam3dshop</a>
+                <a id="adBanner3" target="_blank" class="ad-banner">کانون قلم چی</a>
             </div>
         </div>
 
         <div class="about-footer">
             <div class="footer-info">
                 <h3>درباره من</h3>
-                <p>مهندس آرتا اجتماعی، متخصص طراحی وب و مدرس علوم کامپیوتر با بیش از سال‌ها تجربه در پیاده‌سازی پروژه‌های مدرن مبتنی بر نیاز بازار کار.</p>
+                <p>مهندس آرتا اجتماعی، متخصص طراحی وب و مدرس علوم کامپیوتر با چند سال تجربه در پیاده‌سازی پروژه‌های مدرن مبتنی بر نیاز بازار کار. ارائه‌دهنده دو خدمت اصلی: طراحی و توسعه وب‌سایت، و آموزش کامپیوتر.</p>
             </div>
             <div class="footer-info">
                 <h3>اطلاعات تماس</h3>
                 <p>📍 آدرس: ایران، تبریز</p>
-                <p>📧 ایمیل: arta@example.com</p>
+                <p>📧 ایمیل: <a href="mailto:artamaeiegte@gmail.com" class="phone" style="font-size:1rem;">artamaeiegte@gmail.com</a></p>
                 <p>📞 تلفن: <a href="tel:09147782146" class="phone">09147782146</a></p>
             </div>
         </div>
         <p style="text-align: center; color: var(--gray); font-size: 0.9rem;">© 2026 مهندس آرتا اجتماعی. تمامی حقوق محفوظ است.</p>
     </footer>
 
+    <div id="toast" role="status" aria-live="polite"></div>
     <script>
-        // میانبر ورود ادمین: Ctrl + Alt + M
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'm') {
-                e.preventDefault();
-                showSection('admin-section');
-                checkLoginStatus();
-            }
-        });
+        // ===== تنظیمات محتوا: برای انتشار عمومی، اینجا ویرایش کن =====
+        const WA_NUMBER = '989147782146';
+        const SITE_CONFIG = {
+            ads: [
+                { text: 'مدرسه مشکات تبریز', link: 'https://meshkattabriz.ir/' },
+                { text: 'فروشگاه arsam3dshop', link: 'https://arsam3dshop.ir/' },
+                { text: 'کانون قلم چی', link: 'https://www.kanoon.ir/' }
+            ],
+            // نمونه: { type: 'project' | 'article' | 'blog', title: '...', desc: '...', image: 'images/x.jpg' }
+            content: []
+        };
+        const LS = { content: 'artaContent', ads: 'artaAdsData', hash: 'artaAdminPassHash2' };
 
-        function showSection(id) {
+        function safeGetJSON(key, fallback) {
+            try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; }
+            catch (e) { return fallback; }
+        }
+        function safeSet(key, val) { try { localStorage.setItem(key, val); return true; } catch (e) { return false; } }
+        function toast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.classList.add('show');
+            clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 3500);
+        }
+        function faDigits(s) {
+            return String(s).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+        }
+        function validPhone(p) { return /^(\+98|0098|98|0)?9\d{9}$/.test(faDigits(p).replace(/[\s-]/g, '')); }
+        function sendWA(text) { window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text), '_blank', 'noopener'); }
+
+        // ===== ناوبری =====
+        function currentId() {
+            try { return decodeURIComponent(window.location.hash.replace('#', '')) || 'home'; } catch (e) { return 'home'; }
+        }
+        function closeMenu() {
+            document.getElementById('mainNav').classList.remove('open');
+            document.getElementById('navToggle').setAttribute('aria-expanded', 'false');
+        }
+        function toggleMenu() {
+            const open = document.getElementById('mainNav').classList.toggle('open');
+            document.getElementById('navToggle').setAttribute('aria-expanded', String(open));
+        }
+        function renderSection(id) {
+            let target = null;
             document.querySelectorAll('section').forEach(sec => {
-                sec.classList.remove('active');
-                sec.style.display = 'none';
+                sec.classList.remove('active'); sec.style.display = 'none';
+                if (sec.id === id) target = sec;
             });
-            const target = document.getElementById(id);
-            if (target) {
-                target.style.display = 'flex';
-                setTimeout(() => target.classList.add('active'), 10);
-            }
+            if (!target) target = document.getElementById('home');
+            target.style.display = 'flex';
+            setTimeout(() => target.classList.add('active'), 10);
+            if (target.id === 'admin-section') checkLoginStatus();
+            closeMenu();
             window.scrollTo(0, 0);
         }
-
-        // ذرات معلق
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 20; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.width = p.style.height = Math.random() * 10 + 5 + 'px';
-            p.style.animationDuration = Math.random() * 10 + 10 + 's';
-            p.style.animationDelay = Math.random() * 5 + 's';
-            particlesContainer.appendChild(p);
+        function showSection(id) {
+            if (window.location.hash !== '#' + id) window.location.hash = id;
+            else renderSection(id);
+            return false;
+        }
+        window.addEventListener('hashchange', () => renderSection(currentId()));
+        // میانبر ورود ادمین: Ctrl + Alt + E (مستقل از زبان کیبورد)
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey && e.altKey && e.code === 'KeyE') { e.preventDefault(); showSection('admin-section'); }
+        });
+        function enroll(course) {
+            document.getElementById('service').value = 'آموزش کامپیوتر';
+            document.getElementById('details').value = 'می‌خوام برای «' + course + '» ثبت‌نام کنم.';
+            showSection('contact');
         }
 
-        // تیکت پشتیبانی
-        document.getElementById('ticketForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const ticket = {
-                id: Date.now(),
-                isTicket: true,
-                type: document.getElementById('ticketType').value,
-                details: document.getElementById('ticketDetails').value,
-                date: new Date().toLocaleDateString('fa-IR')
-            };
-            let orders = JSON.parse(localStorage.getItem('artaOrders')) || [];
-            orders.push(ticket);
-            localStorage.setItem('artaOrders', JSON.stringify(orders));
-            alert('تیکت شما با موفقیت ثبت شد.');
-            this.reset();
-            showSection('home');
-        });
-
-        // فرم سفارش
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const order = {
-                id: Date.now(),
-                isTicket: false,
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                details: document.getElementById('details').value,
-                date: new Date().toLocaleDateString('fa-IR')
-            };
-            let orders = JSON.parse(localStorage.getItem('artaOrders')) || [];
-            orders.push(order);
-            localStorage.setItem('artaOrders', JSON.stringify(orders));
-            alert('سفارش شما ثبت شد!');
-            this.reset();
-            showSection('home');
-        });
-
-        // آمار بازدید
-        function updateVisitCount() {
-            let count = localStorage.getItem('artaVisits') || 0;
-            count = parseInt(count) + 1;
-            localStorage.setItem('artaVisits', count);
-            const display = document.getElementById('visitCountDisplay');
-            if(display) display.innerText = count;
-        }
-        function resetVisits() {
-            if(confirm('آمار بازدید ریست شود؟')) {
-                localStorage.setItem('artaVisits', 0);
-                document.getElementById('visitCountDisplay').innerText = 0;
+        // ذرات معلق (فقط دسکتاپ و بدون ترجیح کاهش انیمیشن)
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.innerWidth > 768) {
+            const box = document.getElementById('particles');
+            for (let i = 0; i < 12; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.width = p.style.height = Math.random() * 10 + 5 + 'px';
+                p.style.animationDuration = Math.random() * 10 + 10 + 's';
+                p.style.animationDelay = Math.random() * 5 + 's';
+                box.appendChild(p);
             }
         }
 
-        // هش ساده و امنیت ادمین
-        function simpleHash(str) {
-            let hash = 0;
-            for (let i = 0; i < str.length; i++) {
-                hash = (hash << 5) - hash + str.charCodeAt(i);
-                hash |= 0;
-            }
-            return hash.toString();
-        }
-        if (!localStorage.getItem('artaAdminPassHash')) {
-            localStorage.setItem('artaAdminPassHash', simpleHash('1234'));
-        }
+        // ===== فرم‌ها: ارسال از طریق واتساپ =====
+        document.getElementById('ticketForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (this.elements.website.value) return;
+            const phone = document.getElementById('tPhone').value;
+            if (!validPhone(phone)) { toast('شماره تماس معتبر نیست'); return; }
+            sendWA('🎫 تیکت پشتیبانی\nنام: ' + document.getElementById('tName').value.trim() +
+                '\nتماس: ' + faDigits(phone).trim() +
+                '\nنوع: ' + document.getElementById('ticketType').value +
+                '\nتوضیحات: ' + document.getElementById('ticketDetails').value.trim());
+            this.reset();
+            toast('واتساپ باز شد؛ پیام رو ارسال کن تا به دستم برسه');
+            showSection('home');
+        });
+        document.getElementById('orderForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (this.elements.website.value) return;
+            const phone = document.getElementById('phone').value;
+            if (!validPhone(phone)) { toast('شماره تماس معتبر نیست'); return; }
+            sendWA('🛍️ درخواست جدید (' + document.getElementById('service').value + ')\nنام: ' +
+                document.getElementById('name').value.trim() + '\nتماس: ' + faDigits(phone).trim() +
+                '\nتوضیحات: ' + document.getElementById('details').value.trim());
+            this.reset();
+            toast('واتساپ باز شد؛ پیام رو ارسال کن تا به دستم برسه');
+            showSection('home');
+        });
 
+        // ===== پنل ادمین (سمت مرورگر؛ برای پیش‌نمایش محلی) =====
+        async function sha256(str) {
+            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
         function checkLoginStatus() {
-            if (sessionStorage.getItem('artaAdminLogged') === 'true') {
-                document.getElementById('loginBox').style.display = 'none';
-                document.getElementById('adminPanelContent').style.display = 'block';
-                updateVisitCount();
-                showOrders();
-                loadAdsInputs(); // بارگذاری مقادیر قبلی تبلیغات در فرم ادمین
-            } else {
-                document.getElementById('loginBox').style.display = 'block';
-                document.getElementById('adminPanelContent').style.display = 'none';
-            }
+            const logged = sessionStorage.getItem('artaAdminLogged') === 'true';
+            document.getElementById('loginBox').style.display = logged ? 'none' : 'block';
+            document.getElementById('adminPanelContent').style.display = logged ? 'block' : 'none';
+            document.getElementById('loginHint').textContent = localStorage.getItem(LS.hash)
+                ? 'ورود ادمین' : 'اولین ورود: یک رمز عبور (حداقل ۸ کاراکتر) تعیین کن';
+            if (logged) loadAdsInputs();
         }
-
-        function checkLogin() {
-            const inputPass = document.getElementById('adminPass').value;
-            if (simpleHash(inputPass) === localStorage.getItem('artaAdminPassHash')) {
-                sessionStorage.setItem('artaAdminLogged', 'true');
-                checkLoginStatus();
-            } else {
-                alert('رمز عبور اشتباه است!');
+        async function checkLogin() {
+            if (!window.crypto || !crypto.subtle) { toast('برای ورود به پنل، سایت باید با HTTPS باز شود'); return; }
+            const pass = document.getElementById('adminPass').value;
+            const stored = localStorage.getItem(LS.hash);
+            if (!stored) {
+                if (pass.length < 8) { toast('رمز باید حداقل ۸ کاراکتر باشد'); return; }
+                safeSet(LS.hash, await sha256(pass));
+            } else if (await sha256(pass) !== stored) {
+                toast('رمز عبور اشتباه است'); return;
             }
+            sessionStorage.setItem('artaAdminLogged', 'true');
+            document.getElementById('adminPass').value = '';
+            checkLoginStatus();
         }
-
         function logout() {
             sessionStorage.removeItem('artaAdminLogged');
+            checkLoginStatus();
             showSection('home');
         }
-
-        function changePassword() {
-            const newPass = document.getElementById('newPassword').value;
-            if(newPass.length < 4) { alert('رمز عبور باید حداقل ۴ رقم باشد.'); return; }
-            localStorage.setItem('artaAdminPassHash', simpleHash(newPass));
-            alert('رمز تغییر کرد.');
-            logout();
+        async function changePassword() {
+            const np = document.getElementById('newPassword').value;
+            if (np.length < 8) { toast('رمز باید حداقل ۸ کاراکتر باشد'); return; }
+            safeSet(LS.hash, await sha256(np));
+            document.getElementById('newPassword').value = '';
+            toast('رمز تغییر کرد'); logout();
+        }
+        function switchTab(name, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            ['addContent', 'manageAds', 'security'].forEach(t => {
+                document.getElementById('tab-' + t).style.display = t === name ? 'block' : 'none';
+            });
         }
 
-        function showOrders() {
-            const orders = JSON.parse(localStorage.getItem('artaOrders')) || [];
-            const list = document.getElementById('ordersList');
-            list.innerHTML = orders.length === 0 ? '<p style="color:#666; padding:20px;">داده‌ای وجود ندارد.</p>' : '';
-            orders.slice().reverse().forEach(o => {
-                if (o.isTicket) {
-                    list.innerHTML += `
-                        <div class="order-item" style="border-right-color: var(--secondary);">
-                            <div style="display:flex; justify-content:space-between;">
-                                <h4 style="color:var(--secondary);">🎫 تیکت پشتیبانی</h4>
-                                <button onclick="deleteOrder(${o.id})" style="background:#ff4444; border:none; color:white; padding:5px; border-radius:4px; cursor:pointer;">حذف</button>
-                            </div>
-                            <p><strong>نوع:</strong> ${o.type}</p>
-                            <p style="color:#aaa;">${o.details}</p>
-                        </div>`;
-                } else {
-                    list.innerHTML += `
-                        <div class="order-item">
-                            <div style="display:flex; justify-content:space-between;">
-                                <h4 style="color:var(--primary);">🛍️ سفارش جدید</h4>
-                                <button onclick="deleteOrder(${o.id})" style="background:#ff4444; border:none; color:white; padding:5px; border-radius:4px; cursor:pointer;">حذف</button>
-                            </div>
-                            <p><strong>مشتری:</strong> ${o.name} | 📞 ${o.phone}</p>
-                            <p style="color:#aaa;">${o.details}</p>
-                        </div>`;
+        // ===== محتوای عمومی =====
+        function safeImgSrc(s) {
+            return typeof s === 'string' && (/^data:image\/(png|jpe?g|webp|gif);base64,/.test(s) ||
+                /^https?:\/\//i.test(s) || /^[\w./-]+\.(png|jpe?g|webp|gif|svg)$/i.test(s));
+        }
+        function buildCard(item) {
+            const d = document.createElement('div');
+            d.className = 'glass-box preview-card';
+            d.style.cssText = 'padding:0; overflow:hidden';
+            if (safeImgSrc(item.image)) {
+                const im = document.createElement('img');
+                im.src = item.image; im.alt = item.title || ''; im.loading = 'lazy';
+                d.appendChild(im);
+            } else {
+                const ph = document.createElement('div');
+                ph.style.cssText = 'width:100%; height:200px; background:rgba(255,255,255,0.05); display:flex; align-items:center; justify-content:center; color:#777;';
+                ph.textContent = 'بدون تصویر';
+                d.appendChild(ph);
+            }
+            const body = document.createElement('div');
+            body.style.cssText = 'padding:20px; text-align:right;';
+            const h = document.createElement('h3');
+            h.style.cssText = 'color:var(--primary); margin-bottom:10px;'; h.textContent = item.title || '';
+            const p = document.createElement('p');
+            p.style.fontSize = '0.9rem'; p.textContent = item.desc || '';
+            body.append(h, p); d.appendChild(body);
+            return d;
+        }
+        function loadPublicContent() {
+            const map = { project: 'publicProjectsContainer', article: 'publicArticlesContainer', blog: 'publicBlogContainer' };
+            const items = [...SITE_CONFIG.content, ...safeGetJSON(LS.content, [])];
+            Object.entries(map).forEach(([type, id]) => {
+                const box = document.getElementById(id);
+                box.replaceChildren();
+                items.filter(i => i && i.type === type).forEach(i => box.appendChild(buildCard(i)));
+                if (!box.children.length) {
+                    const p = document.createElement('p');
+                    p.style.cssText = 'color:#888; grid-column: 1 / -1;';
+                    p.textContent = 'به‌زودی محتوای جدید اینجا منتشر می‌شود.';
+                    box.appendChild(p);
                 }
             });
         }
-
-        function deleteOrder(id) {
-            if(confirm('حذف شود؟')) {
-                let orders = JSON.parse(localStorage.getItem('artaOrders')) || [];
-                orders = orders.filter(o => o.id !== id);
-                localStorage.setItem('artaOrders', JSON.stringify(orders));
-                showOrders();
-            }
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if(event) event.target.classList.add('active');
-            document.getElementById('tab-orders').style.display = 'none';
-            document.getElementById('tab-addContent').style.display = 'none';
-            document.getElementById('tab-manageAds').style.display = 'none';
-            document.getElementById('tab-security').style.display = 'none';
-            document.getElementById('tab-' + tabName).style.display = 'block';
-        }
-
-        function loadPublicContent() {
-            const projectsContainer = document.getElementById('publicProjectsContainer');
-            const articlesContainer = document.getElementById('publicArticlesContainer');
-            const blogContainer = document.getElementById('publicBlogContainer');
-            const contentData = JSON.parse(localStorage.getItem('artaContent')) || [];
-            
-            if(projectsContainer) projectsContainer.innerHTML = '';
-            if(articlesContainer) articlesContainer.innerHTML = '';
-            if(blogContainer) blogContainer.innerHTML = '';
-
-            contentData.forEach(item => {
-                const div = document.createElement('div');
-                div.className = 'glass-box preview-card';
-                div.style.padding = '0'; div.style.overflow = 'hidden';
-                let imgTag = item.image ? `<img src="${item.image}">` : `<img src="https://via.placeholder.com/400x200?text=No+Image">`;
-                div.innerHTML = `
-                    ${imgTag}
-                    <div style="padding: 20px; text-align:right;">
-                        <h3 style="color: var(--primary); margin-bottom:10px;">${item.title}</h3>
-                        <p style="font-size:0.9rem;">${item.desc}</p>
-                    </div>`;
-                if (item.type === 'project' && projectsContainer) projectsContainer.appendChild(div);
-                else if (item.type === 'article' && articlesContainer) articlesContainer.appendChild(div);
-                else if (item.type === 'blog' && blogContainer) blogContainer.appendChild(div);
+        function compressImage(file) {
+            return new Promise((resolve, reject) => {
+                const img = new Image(); const url = URL.createObjectURL(file);
+                img.onload = () => {
+                    const r = Math.min(1, 900 / Math.max(img.width, img.height));
+                    const c = document.createElement('canvas');
+                    c.width = Math.round(img.width * r); c.height = Math.round(img.height * r);
+                    c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+                    URL.revokeObjectURL(url); resolve(c.toDataURL('image/jpeg', 0.8));
+                };
+                img.onerror = reject; img.src = url;
             });
         }
-
-        function addNewContent() {
+        async function addNewContent() {
             const type = document.getElementById('contentType').value;
-            const title = document.getElementById('newContentTitle').value;
-            const desc = document.getElementById('newContentDesc').value;
-            const fileInput = document.getElementById('contentImage');
-            if(!title || !desc) { alert('فیلدها را پر کنید'); return; }
-
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) { saveContent(type, title, desc, e.target.result); };
-                reader.readAsDataURL(fileInput.files[0]);
-            } else { saveContent(type, title, desc, null); }
-        }
-
-        function saveContent(type, title, desc, image) {
-            let contentData = JSON.parse(localStorage.getItem('artaContent')) || [];
-            contentData.push({ type, title, desc, image, id: Date.now() });
-            localStorage.setItem('artaContent', JSON.stringify(contentData));
-            alert('منتشر شد!');
+            const title = document.getElementById('newContentTitle').value.trim();
+            const desc = document.getElementById('newContentDesc').value.trim();
+            const file = document.getElementById('contentImage').files[0];
+            if (!title || !desc) { toast('عنوان و توضیحات را پر کن'); return; }
+            let image = null;
+            if (file) { try { image = await compressImage(file); } catch (e) { toast('تصویر خوانده نشد'); return; } }
+            const data = safeGetJSON(LS.content, []);
+            data.push({ type, title, desc, image, id: Date.now() });
+            if (!safeSet(LS.content, JSON.stringify(data))) { toast('حافظه مرورگر پر است؛ تصویر کوچک‌تری انتخاب کن'); return; }
+            ['newContentTitle', 'newContentDesc', 'contentImage'].forEach(i => document.getElementById(i).value = '');
+            toast('در پیش‌نمایش همین مرورگر ذخیره شد');
             loadPublicContent();
         }
+        function clearLocalContent() {
+            if (confirm('همه محتوای ذخیره‌شده در این مرورگر پاک شود؟')) { localStorage.removeItem(LS.content); loadPublicContent(); }
+        }
 
-        // --- مدیریت تبلیغات هوشمند ---
+        // ===== تبلیغات =====
+        function getAds() {
+            const a = safeGetJSON(LS.ads, null);
+            return Array.isArray(a) && a.length === 3 && a.every(x => x && typeof x.text === 'string') ? a : SITE_CONFIG.ads;
+        }
         function loadAdsData() {
-            const defaultAds = [
-                { text: "محل تبلیغات شما", link: "#" },
-                { text: "شرکت توسعه وب تک", link: "#" },
-                { text: "آکادمی هوش مصنوعی", link: "#" }
-            ];
-            const ads = JSON.parse(localStorage.getItem('artaAdsData')) || defaultAds;
-            
-            for (let i = 1; i <= 3; i++) {
-                const banner = document.getElementById(`adBanner${i}`);
-                if (banner) {
-                    banner.innerText = ads[i-1].text;
-                    banner.href = ads[i-1].link || '#';
-                    if(!ads[i-1].link || ads[i-1].link === '#') {
-                        banner.style.cursor = 'default';
-                    } else {
-                        banner.style.cursor = 'pointer';
-                    }
+            getAds().forEach((ad, i) => {
+                const b = document.getElementById('adBanner' + (i + 1));
+                if (!b) return;
+                b.textContent = ad.text;
+                if (/^https?:\/\//i.test(ad.link || '')) {
+                    b.href = ad.link; b.target = '_blank'; b.rel = 'noopener sponsored'; b.style.cursor = 'pointer';
+                } else {
+                    b.removeAttribute('href'); b.removeAttribute('target'); b.style.cursor = 'default';
                 }
-            }
+            });
         }
-
         function loadAdsInputs() {
-            const defaultAds = [
-                { text: "محل تبلیغات شما", link: "" },
-                { text: "شرکت توسعه وب تک", link: "" },
-                { text: "آکادمی هوش مصنوعی", link: "" }
-            ];
-            const ads = JSON.parse(localStorage.getItem('artaAdsData')) || defaultAds;
-            for (let i = 1; i <= 3; i++) {
-                if(document.getElementById(`adText${i}`)) document.getElementById(`adText${i}`).value = ads[i-1].text;
-                if(document.getElementById(`adLink${i}`)) document.getElementById(`adLink${i}`).value = ads[i-1].link;
-            }
+            getAds().forEach((ad, i) => {
+                document.getElementById('adText' + (i + 1)).value = ad.text;
+                document.getElementById('adLink' + (i + 1)).value = ad.link || '';
+            });
         }
-
         function updateAdsData() {
-            const updatedAds = [
-                { text: document.getElementById('adText1').value, link: document.getElementById('adLink1').value },
-                { text: document.getElementById('adText2').value, link: document.getElementById('adLink2').value },
-                { text: document.getElementById('adText3').value, link: document.getElementById('adLink3').value }
-            ];
-            localStorage.setItem('artaAdsData', JSON.stringify(updatedAds));
-            alert('تبلیغات با موفقیت به‌روزرسانی شد!');
+            const ads = [1, 2, 3].map(i => ({
+                text: document.getElementById('adText' + i).value.trim(),
+                link: document.getElementById('adLink' + i).value.trim()
+            }));
+            if (ads.some(a => !a.text)) { toast('متن بنر نباید خالی باشد'); return; }
+            if (ads.some(a => a.link && !/^https?:\/\//i.test(a.link))) { toast('لینک باید با http:// یا https:// شروع شود'); return; }
+            safeSet(LS.ads, JSON.stringify(ads));
+            toast('ذخیره شد (فقط در این مرورگر)');
             loadAdsData();
         }
 
-        window.onload = function() {
+        document.addEventListener('click', e => { if (!e.target.closest('header')) closeMenu(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+        document.addEventListener('DOMContentLoaded', () => {
             loadPublicContent();
-            loadAdsData(); // لود کردن بنرهای تبلیغاتی فوتر
-            showSection('home');
-        }
+            loadAdsData();
+            renderSection(currentId());
+        });
     </script>
 </body>
 </html>
